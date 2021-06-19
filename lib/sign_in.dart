@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hello_fridge/single_ingredient.dart';
 import 'package:sign_button/sign_button.dart';
 
-class SignInWidget extends StatelessWidget {
-  // This widget is the root of your application.
+class SignInLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-          child: Align(
-            alignment: Alignment.center,
-            child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+      body: SafeArea(
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Image(
                 image: AssetImage('assets/images/logo.png'),
               ),
@@ -49,36 +51,41 @@ class SignInWidget extends StatelessWidget {
                           buttonSize: ButtonSize.large,
                           onPressed: () {
                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SecondRoute()),
-                            );
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SingleIngredientLayout(
+                                      ingredientsName: "Bread",
+                                      imagePath: "assets/images/bread.png",
+                                      unit: ["Gram", "Kilogram"]),
+                                ));
                           })
                     ]),
               )
-            ]),
+            ],
           ),
-        ));
-    // );
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
         ),
       ),
     );
+
   }
 }
+
+// class SecondRoute extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Second Route"),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: () {
+//             Navigator.pop(context);
+//             // Navigate back to first route when tapped.
+//           },
+//           child: Text('Go back!'),
+//         ),
+//       ),
+//     );
+//   }
+// }
