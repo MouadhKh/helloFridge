@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SingleIngredientLayout extends StatefulWidget {
+  final String ingredientsName;
+  final String imagePath;
+  final List<String> unit;
+
   const SingleIngredientLayout(
       {Key? key,
       required this.ingredientsName,
       required this.imagePath,
       required this.unit})
       : super(key: key);
-
-  final String ingredientsName;
-  final String imagePath;
-  final List<String> unit;
 
   @override
   _SingleIngredientLayoutState createState() => _SingleIngredientLayoutState(
