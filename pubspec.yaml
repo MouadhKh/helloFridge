@@ -12,10 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   sign_button: ^2.0.0
-
-
-
+  material_floating_search_bar: ^0.3.4
   cupertino_icons: ^1.0.2
+  string_similarity: ^2.0.0
 
 dev_dependencies:
   flutter_test:
