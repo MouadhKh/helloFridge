@@ -5,6 +5,7 @@ import 'package:hello_fridge/pot_widget.dart';
 import 'package:hello_fridge/sign_in.dart';
 import 'package:hello_fridge/single_ingredient.dart';
 import 'package:sign_button/sign_button.dart';
+import 'package:hello_fridge/main_layout.dart';
 
 void main() {
   final lightGreen = Color(0xff9ccc65);
@@ -27,7 +28,7 @@ void main() {
                   color: Colors.white),
               headline6: TextStyle(color: Colors.white))),
       //Scaffold take all the screen size
-      home: FillPotLayout()));
+      home: MainLayout()));
   // PotContentList()));
   // Pot()));
   // SignInLayout()));
