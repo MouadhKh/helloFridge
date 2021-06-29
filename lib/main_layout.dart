@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/pot_widget.dart';
 
+import 'main.dart';
+
 class MainLayout extends StatefulWidget {
   const MainLayout({Key? key}) : super(key: key);
 
@@ -18,45 +20,58 @@ class _MainLayoutState extends State<MainLayout> {
         body: Padding(
           padding: const EdgeInsets.only(top: 30),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [Pot(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
-                  onPressed: () {},
-                  child: SizedBox(
-                      width: 120,
-                      height: 20,
-                      child: Row(children: [
-                        Icon(Icons.add_box_outlined),
-                        SizedBox(width: 4),
-                        Text("Fill pot")
-                      ]))),
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Pot(),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
+                    onPressed: () {},
+                    child: SizedBox(
+                        width: 120,
+                        height: 20,
+                        child: Row(children: [
+                          Icon(Icons.add_box_outlined),
+                          SizedBox(width: 4),
+                          Text("Fill pot")
+                        ]))),
+              ),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
+                  style:
+                      ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
                   onPressed: () {},
                   child: SizedBox(
-                      width: 220,
+                      width: 130,
                       height: 20,
-                      child: Text("Get recipes", textAlign: TextAlign.center)
-                      )),
-                TabBarFlexibleFractioallyRecipes()],
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.restaurant,
+                            size: 24,
+                          ),
+                          Text(" Get recipes", textAlign: TextAlign.center),
+                        ],
+                      ))),
+              TabBarFlexibleFractioallyRecipes()
+            ],
           ),
         ));
   }
 }
 
-class TabBarFlexibleFractioallyRecipes extends StatelessWidget{
+class TabBarFlexibleFractioallyRecipes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-        child:Container(
+        child: Container(
+            padding: EdgeInsets.only(top: 40.0),
             alignment: Alignment.bottomCenter,
-            child: FractionallySizedBox(
-                heightFactor: 1,
-                child: TabBarRecipes()
-            )
-        )
-    );
+            child:
+                FractionallySizedBox(heightFactor: 1, child: TabBarRecipes())));
   }
 }
 
@@ -64,16 +79,32 @@ class TabBarRecipes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: greenTheme,
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            toolbarHeight: 0,
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.history)),
-                Tab(icon: Icon(Icons.star)),
-              ],
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(30.0),
+            child: AppBar(
+              primary: false,
+              toolbarHeight: kMinInteractiveDimension,
+              automaticallyImplyLeading: false,
+              titleSpacing: 0.0,
+              bottom: TabBar(
+                tabs: [
+                  Tab(
+                    iconMargin: EdgeInsets.zero,
+                    icon: Icon(Icons.history, size: 16),
+                  ),
+                  Tab(
+                      iconMargin: EdgeInsets.zero,
+                      icon: Icon(
+                        Icons.star,
+                        size: 16.0,
+                      )),
+                ],
+              ),
             ),
           ),
           body: TabBarView(
