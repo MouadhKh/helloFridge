@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/pot_widget.dart';
+import 'package:hello_fridge/recipes_suggestions_layout.dart';
+
 
 import 'main.dart';
 
@@ -43,7 +45,10 @@ class _MainLayoutState extends State<MainLayout> {
               ElevatedButton(
                   style:
                       ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => RecipesSuggestionsLayout()));
+                  },
                   child: SizedBox(
                       width: 130,
                       height: 20,
