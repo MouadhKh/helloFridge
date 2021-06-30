@@ -68,10 +68,9 @@ class TabBarFlexibleFractioallyRecipes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
         child: Container(
-            padding: EdgeInsets.only(top: 40.0),
-            alignment: Alignment.bottomCenter,
+            padding: EdgeInsets.only(top: 15.0),
             child:
-                FractionallySizedBox(heightFactor: 1, child: TabBarRecipes())));
+                TabBarRecipes()));
   }
 }
 
