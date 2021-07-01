@@ -9,12 +9,50 @@ class RecipesSuggestionsLayout extends StatefulWidget {
 }
 
 class _RecipesSuggestionsLayoutState extends State<RecipesSuggestionsLayout> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
         title: Text("Recipes Suggestions"),
     ),
+      body: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(8),
+                  height: 200,
+                  width: 200,
+                  color: Colors.black12,
+                  child: Text("Mayo Fries"),
+                ),
+                Container(
+                  margin: EdgeInsets.all(8),
+                  height: 200,
+                  width: 200,
+                  color: Colors.black12,
+                  child: Text("Ketchup Fries"),
+                ),
+                Container(
+                  margin: EdgeInsets.all(8),
+                  height: 200,
+                  width: 200,
+                  color: Colors.black12,
+                  child: Text('Curry Fries'),
+                ),
+                Container(
+                  margin: EdgeInsets.all(8),
+                  height: 200,
+                  width: 200,
+                  color: Colors.black12,
+                  child: Text('Happy Fries'),
+                )
+              ],
+            )
+          )
+      ),
     );
   }
 }
