@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_fridge/single_recipe_layout.dart';
 
 
 class RecipesSuggestionsLayout extends StatefulWidget {
@@ -26,7 +27,14 @@ class _RecipesSuggestionsLayoutState extends State<RecipesSuggestionsLayout> {
                   height: 200,
                   width: 200,
                   color: Colors.black12,
-                  child: Text("Mayo Fries"),
+                    child: GestureDetector(
+                      onTap: () {
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SingleRecipeLayout()));
+                      },
+                      child: Text("Mayo Fries")
+                      ),
+
                 ),
                 Container(
                   margin: EdgeInsets.all(8),
