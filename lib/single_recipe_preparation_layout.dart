@@ -30,8 +30,33 @@ class _SingleRecipePreparationLayoutState extends State<SingleRecipePreparationL
               padding: const EdgeInsets.all(8.0),
               child: Text("Preparation",style: TextStyle(color: Colors.lightGreen),)
             ),
-            Column(
+            Flexible(
+              child: Container(
+                alignment: Alignment.bottomCenter,
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child:CustomScrollView(
+                  shrinkWrap: true,
+                  slivers: <Widget>[
+                    SliverPadding(
+                      padding: const EdgeInsets.all(0),
+                      sliver: SliverList(
+                        delegate: SliverChildListDelegate(
+                          <Widget>[
+                            Text("1. Cook the rice"),
+                            Text("2. Add the apple"),
+                            Text("3. Add the banana"),
+                            Text("4. Add the tomato"),
+                            Text("5. Add the banana"),
+                            Text("6. Add the orange"),
+                            Text("7. Serve with juice"),
+                          ]
+                        )
+                      )
+                    )
+                  ]
+                ),
               ),
+            ),
             Flexible(
               child: Container(
                 alignment: Alignment.bottomCenter,
