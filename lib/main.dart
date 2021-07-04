@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/fill_pot_layout.dart';
+import 'package:hello_fridge/entities/ingredient.dart';
+import 'package:hello_fridge/ingredients_container.dart';
 import 'package:hello_fridge/pot_content_list.dart';
 import 'package:hello_fridge/pot_widget.dart';
 import 'package:hello_fridge/sign_in.dart';
 import 'package:hello_fridge/single_ingredient.dart';
+import 'package:hello_fridge/single_ingredient_icon.dart';
 import 'package:sign_button/sign_button.dart';
 import 'package:hello_fridge/main_layout.dart';
 

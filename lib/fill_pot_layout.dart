@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_fridge/ingredients_container.dart';
 import 'package:hello_fridge/pot_content_list.dart';
 import 'package:hello_fridge/pot_widget.dart';
 
@@ -15,9 +16,13 @@ class _FillPotLayoutState extends State<FillPotLayout> {
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.only(top: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [Pot()],
+      child: SizedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [Pot(),
+
+            IngredientsContainer()],
+        ),
       ),
     ));
   }

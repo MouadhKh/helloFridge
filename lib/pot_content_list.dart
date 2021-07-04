@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_fridge/pot_content.dart';
-import 'package:hello_fridge/ingredient.dart';
+import 'package:hello_fridge/entities/pot_content.dart';
+import 'package:hello_fridge/entities/ingredient.dart';
 
 class PotContentList extends StatelessWidget {
   final PotContent potContent =

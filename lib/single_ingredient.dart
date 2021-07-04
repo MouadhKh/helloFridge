@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SingleIngredientLayout extends StatefulWidget {
-  final String ingredientsName;
-  final String imagePath;
-  final List<String> unit;
+  final String? ingredientsName;
+  final String? imagePath;
+  final List<String>? unit;
 
+  //
   const SingleIngredientLayout(
-      {Key? key,
-      required this.ingredientsName,
-      required this.imagePath,
-      required this.unit})
+      {Key? key, this.ingredientsName, this.imagePath, this.unit})
       : super(key: key);
 
   @override
@@ -18,18 +17,18 @@ class SingleIngredientLayout extends StatefulWidget {
 }
 
 class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
-  late String _ingredientsName;
-  late String _imagePath;
-  late List<String> _unit;
-  late String _selectedUnit;
+  String? _ingredientsName;
+  String? _imagePath;
+  List<String>? _unit;
+  String? _selectedUnit = "";
 
   //TODO check unit is not empty
   _SingleIngredientLayoutState(
-      String ingredientsName, String imagePath, List<String> unit) {
+      String? ingredientsName, String? imagePath, List<String>? unit) {
     this._ingredientsName = ingredientsName;
     this._imagePath = imagePath;
     this._unit = unit;
-    if (unit.isEmpty) {
+    if (unit!.isNotEmpty) {
       this._selectedUnit = unit.first;
     }
   }
@@ -38,7 +37,7 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(title: Text(_ingredientsName), centerTitle: true),
+        appBar: AppBar(title: Text(_ingredientsName!), centerTitle: true),
         body: Container(
           child: SingleChildScrollView(
             child: SizedBox(
@@ -53,7 +52,7 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                     child: CircleAvatar(
                         backgroundColor: Colors.transparent,
                         radius: 180,
-                        child: ClipOval(child: Image.asset(_imagePath))),
+                        child: ClipOval(child: Image.asset(_imagePath!))),
                   ),
                   flex: 2,
                 ),
@@ -83,7 +82,7 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                                   labelText: 'Unity',
                                 ),
                                 //TODO check if its empty later
-                                value: _unit.first,
+                                value: _unit!.first,
                                 icon: const Icon(Icons.arrow_downward),
                                 iconSize: 24,
                                 elevation: 16,
@@ -94,7 +93,7 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                                     _selectedUnit = newValue!;
                                   });
                                 },
-                                items: _unit.map<DropdownMenuItem<String>>(
+                                items: _unit!.map<DropdownMenuItem<String>>(
                                     (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
@@ -107,17 +106,22 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                       SizedBox(
                         height: 60,
                       ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.all(10.0)),
-                        onPressed: () {},
-                        child: SizedBox(
-                          width: 120,
-                          child: Row(children: [
-                            Icon(Icons.add),
-                            SizedBox(width: 4),
-                            Text("Add to pot")
-                          ]),
+                      Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.all(10.0)),
+                          onPressed: () {
+                            //TODO
+                          },
+                          child: SizedBox(
+                            width: 120,
+                            child: Row(children: [
+                              Icon(Icons.add),
+                              SizedBox(width: 4),
+                              Text("Add to pot")
+                            ]),
+                          ),
                         ),
                       ),
                     ],
