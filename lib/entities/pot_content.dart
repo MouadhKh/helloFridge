@@ -1,17 +1,17 @@
 import 'ingredient.dart';
 
 class PotContent {
-  late List<Ingredient> _ingredients;
+  late Set<Ingredient> _ingredients;
 
   PotContent() {
-    this._ingredients = [];
+    this._ingredients = <Ingredient>{};
   }
 
-  PotContent.fromIngredients({required List<Ingredient> ingredients}) {
+  PotContent.fromIngredients({required Set<Ingredient> ingredients}) {
     this._ingredients = ingredients;
   }
 
-  List<Ingredient> get ingredients => _ingredients;
+  Set<Ingredient> get ingredients => _ingredients;
 
   int getPotSize() {
     return this._ingredients.length;

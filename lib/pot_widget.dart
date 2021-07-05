@@ -10,8 +10,6 @@ class Pot extends StatelessWidget {
   final PotContent potContent =
       PotContent.fromIngredients(ingredients: Ingredient.getDummyIngredients());
 
-  // const Pot({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Material(

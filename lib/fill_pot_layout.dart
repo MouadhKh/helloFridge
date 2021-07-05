@@ -19,9 +19,7 @@ class _FillPotLayoutState extends State<FillPotLayout> {
       child: SizedBox(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Pot(),
-
-            IngredientsContainer()],
+          children: [Pot(), IngredientsContainer()],
         ),
       ),
     ));

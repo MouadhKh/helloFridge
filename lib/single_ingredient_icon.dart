@@ -4,7 +4,6 @@ import 'package:hello_fridge/single_ingredient.dart';
 import 'entities/ingredient.dart';
 
 class SingleIngredientIcon extends StatelessWidget {
-  // const SingleIngredientIcon({Key? key,Ingredient? ingredient}) : super(key: key,ingredient);
   final Ingredient ingredient;
 
   SingleIngredientIcon(this.ingredient);
@@ -34,13 +33,13 @@ class SingleIngredientIcon extends StatelessWidget {
                                 builder: (context) => SingleIngredientLayout(
                                     ingredientsName: ingredient.name,
                                     imagePath: ingredient.imagePath,
-                                    unit: ingredient.unity)));
+                                    unit: ingredient.unit)));
                       },
-                      child: Image.asset(ingredient.imagePath!,
+                      child: Image.asset(ingredient.imagePath,
                           height: 40, width: 40)),
                 )),
           ),
-          Text(ingredient.name!)
+          Text(ingredient.name)
         ],
       ),
     );

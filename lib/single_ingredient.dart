@@ -6,7 +6,6 @@ class SingleIngredientLayout extends StatefulWidget {
   final String? imagePath;
   final List<String>? unit;
 
-  //
   const SingleIngredientLayout(
       {Key? key, this.ingredientsName, this.imagePath, this.unit})
       : super(key: key);
