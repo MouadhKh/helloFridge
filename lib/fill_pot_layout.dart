@@ -14,14 +14,15 @@ class _FillPotLayoutState extends State<FillPotLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(title: Text("My Pot")),
         body: Padding(
-      padding: const EdgeInsets.only(top: 30),
-      child: SizedBox(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Pot(), IngredientsContainer()],
-        ),
-      ),
-    ));
+          padding: const EdgeInsets.only(top: 30),
+          child: SizedBox(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [Pot(), IngredientsContainer()],
+            ),
+          ),
+        ));
   }
 }
