@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/single_recipe_container.dart';
 
@@ -62,8 +63,40 @@ class SingleRecipePreparationLayout extends StatelessWidget {
             children: [
               ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => MainLayout()));
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Add to history'),
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0))),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text('Have you already cooked this recipe ?'),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Text(
+                                      'The ingredients will be removed from your pot',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.red)),
+                                )
+                              ],
+                            ),
+                            actions: [
+                              TextButton(
+                                  child: Text('No'),
+                                  onPressed: () {
+                                    Navigator.pop(context, 'Cancel');
+                                  }),
+                              TextButton(
+                                  child: Text('Yes'),
+                                  onPressed: () {
+                                    //TODO go to the new mainLayout
+                                  })
+                            ],
+                          ));
                 },
                 icon: Icon(Icons.history),
                 label: Text("Add to history"),
