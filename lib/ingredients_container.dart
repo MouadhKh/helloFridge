@@ -11,7 +11,7 @@ class IngredientsContainer extends StatefulWidget {
 }
 
 class _IngredientsContainerState extends State<IngredientsContainer> {
-  late List<Ingredient> ingredients;
+  late Set<Ingredient> ingredients;
   var searchController = TextEditingController();
 
   @override
@@ -31,7 +31,7 @@ class _IngredientsContainerState extends State<IngredientsContainer> {
             StringSimilarity.compareTwoStrings(ing.name, newValue);
         print("$similarity for ${ing.name}");
         return similarity > 0.2;
-      }).toList();
+      }).toSet();
       ingredients.forEach((element) {
         print("found ${element.name}");
       });
@@ -40,7 +40,7 @@ class _IngredientsContainerState extends State<IngredientsContainer> {
     setState(() {});
   }
 
-  Widget _searchBar(List<Ingredient> ingredients) {
+  Widget _searchBar(Set<Ingredient> ingredients) {
     return Row(
       children: <Widget>[
         IconButton(
@@ -88,9 +88,7 @@ class _IngredientsContainerState extends State<IngredientsContainer> {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
+      child: Column(mainAxisSize: MainAxisSize.max, children: [
         Expanded(flex: 1, child: _searchBar(this.ingredients)),
         Expanded(flex: 5, child: IngredientsGrid(this.ingredients))
       ]),
@@ -99,7 +97,7 @@ class _IngredientsContainerState extends State<IngredientsContainer> {
 }
 
 class IngredientsGrid extends StatelessWidget {
-  List<Ingredient> ingredients;
+  Set<Ingredient> ingredients;
 
   IngredientsGrid(this.ingredients);
 
@@ -113,7 +111,7 @@ class IngredientsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    this.ingredients.forEach((ing) => print(ing.name! + ","));
+    this.ingredients.forEach((ing) => print(ing.name + ","));
     return ListView(
       children: <Widget>[
         GridView.count(

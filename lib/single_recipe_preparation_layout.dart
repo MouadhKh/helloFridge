@@ -1,123 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:hello_fridge/main_layout.dart';
-import 'package:hello_fridge/pot_content_list.dart';
+import 'package:hello_fridge/single_recipe_container.dart';
 
+import 'entities/recipe.dart';
+import 'main_layout.dart';
 
-class SingleRecipePreparationLayout extends StatefulWidget {
-  const SingleRecipePreparationLayout({Key? key}) : super(key: key);
+class SingleRecipePreparationLayout extends StatelessWidget {
+  Recipe recipe;
 
-  @override
-  _SingleRecipePreparationLayoutState createState() => _SingleRecipePreparationLayoutState();
-}
+  SingleRecipePreparationLayout(this.recipe);
 
-class _SingleRecipePreparationLayoutState extends State<SingleRecipePreparationLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-        title: Text("Mayo Fries"),
+      appBar: AppBar(
+        title: Text(recipe.name),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 30),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset("assets/images/bowl.png".toString()),
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Preparation",style: TextStyle(color: Colors.lightGreen),)
-            ),
-            Flexible(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child:CustomScrollView(
-                  shrinkWrap: true,
-                  slivers: <Widget>[
-                    SliverPadding(
-                      padding: const EdgeInsets.all(0),
-                      sliver: SliverList(
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: SingleRecipeContainer(recipe, 250, 250),
+          ),
+          Container(
+            child: Column(
+              children: [
+                Text("Preparation",
+                    style: TextStyle(
+                        fontFamily: 'Lobster',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        color: Colors.lightGreen)),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: CustomScrollView(
+                    shrinkWrap: true,
+                    slivers: <Widget>[
+                      SliverList(
                         delegate: SliverChildListDelegate(
-                          <Widget>[
-                            Text("1. Cook the rice"),
-                            Text("2. Add the apple"),
-                            Text("3. Add the banana"),
-                            Text("4. Add the tomato"),
-                            Text("5. Add the banana"),
-                            Text("6. Add the orange"),
-                            Text("7. Serve with juice"),
-                          ]
-                        )
-                      )
-                    )
-                  ]
-                ),
-              ),
-            ),
-            Flexible(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                child:Row(
-                  children:[
-                    Flexible(
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      child: ElevatedButton(
-                        style:
-                        ElevatedButton.styleFrom(padding: EdgeInsets.all(0)),
-                        onPressed: () {},
-                        child: SizedBox(
-                            width: 130,
-                            height: 20,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  size: 24,
-                                ),
-                                Text(" Add to favorites", textAlign: TextAlign.center),
-                              ],
-                            )
-                        )
+                          recipe.preparationSteps
+                              .map((step) => Container(
+                                  padding: EdgeInsets.all(2),
+                                  child: Text(step,
+                                      style: TextStyle(
+                                          fontFamily: 'SourceSansPro',
+                                          fontSize: 20))))
+                              .toList(),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  Flexible(
-                    child: Container(
-                      alignment: Alignment.bottomRight,
-                      child: ElevatedButton(
-                          style:
-                          ElevatedButton.styleFrom(padding: EdgeInsets.all(0)),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => MainLayout()));
-                          },
-                          child: SizedBox(
-                              width: 140,
-                              height: 20,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.history,
-                                    size: 24,
-                                  ),
-                                  Text("Add to history", textAlign: TextAlign.center),
-                                ],
-                              ),
-                          )
-                      )
-                    )
-                  ),
-                ]
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => MainLayout()));
+                },
+                icon: Icon(Icons.history),
+                label: Text("Add to history"),
               ),
-            ))
-          ],
-        ),
-      )
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.favorite),
+                label: Text("Add to favorites"),
+              ),
+            ],
+          )
+        ]),
+      ),
     );
   }
 }

@@ -1,66 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:hello_fridge/single_recipe_layout.dart';
+import 'package:hello_fridge/single_recipe_container.dart';
+import 'package:hello_fridge/utilities/recipe_util.dart';
 
+import 'entities/ingredient.dart';
+import 'entities/recipe.dart';
 
 class RecipesSuggestionsLayout extends StatefulWidget {
   const RecipesSuggestionsLayout({Key? key}) : super(key: key);
 
   @override
-  _RecipesSuggestionsLayoutState createState() => _RecipesSuggestionsLayoutState();
+  _RecipesSuggestionsLayoutState createState() =>
+      _RecipesSuggestionsLayoutState();
 }
 
 class _RecipesSuggestionsLayoutState extends State<RecipesSuggestionsLayout> {
+  List<Widget> _recipesWidgets() {
+    return RecipeUtility.findBestMatch(
+            Ingredient.getDummyIngredients(), Recipe.getDummyRecipes())
+        .map((recipe) {
+      return SingleRecipeContainer(recipe,120,120);
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        title: Text("Recipes Suggestions"),
-    ),
-      body: Center(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(8),
-                  height: 200,
-                  width: 200,
-                  color: Colors.black12,
-                    child: GestureDetector(
-                      onTap: () {
-                      Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SingleRecipeLayout()));
-                      },
-                      child: Text("Mayo Fries")
-                      ),
-
+          title: Text("Recipes Suggestions"),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Text(
+                  "With your ingredients, you could cook: ",
+                  style: TextStyle(color: Colors.deepOrange.shade300, fontStyle: FontStyle.italic),
                 ),
-                Container(
-                  margin: EdgeInsets.all(8),
-                  height: 200,
-                  width: 200,
-                  color: Colors.black12,
-                  child: Text("Ketchup Fries"),
-                ),
-                Container(
-                  margin: EdgeInsets.all(8),
-                  height: 200,
-                  width: 200,
-                  color: Colors.black12,
-                  child: Text('Curry Fries'),
-                ),
-                Container(
-                  margin: EdgeInsets.all(8),
-                  height: 200,
-                  width: 200,
-                  color: Colors.black12,
-                  child: Text('Happy Fries'),
-                )
-              ],
-            )
-          )
-      ),
-    );
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: ListView(
+                children: <Widget>[
+                  GridView.count(
+                      crossAxisCount: 2,
+                      // physics: NeverScrollableScrollPhysics(),
+                      // to disable GridView's scrolling
+                      shrinkWrap: true,
+                      // You won't see infinite size error
+                      children: _recipesWidgets())
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }

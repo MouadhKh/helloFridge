@@ -38,12 +38,15 @@ class PotContentList extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
                   leading: _getLeadingWidget(index),
-                  title: Text(potContent.ingredients[index].name.toString()),
+                  title: Text(
+                      potContent.ingredients.elementAt(index).name.toString()),
                   dense: true,
-                  subtitle: Text(
-                      potContent.ingredients[index].quantity.toString() +
-                          " " +
-                          potContent.ingredients[index].unity.toString()),
+                  subtitle: Text(potContent.ingredients
+                          .elementAt(index)
+                          .quantity
+                          .toString() +
+                      " " +
+                      potContent.ingredients.elementAt(index).unit.toString()),
                 );
               },
               itemCount: potContent.getPotSize(),
@@ -72,13 +75,13 @@ class PotContentList extends StatelessWidget {
   }
 
   Widget? _getLeadingWidget(int index) {
-    if (potContent.ingredients[index].imagePath != null) {
+    if (potContent.ingredients.elementAt(index).imagePath != null) {
       return CircleAvatar(
         radius: 32,
         backgroundColor: Colors.transparent,
         child: ClipOval(
           child: Image.asset(
-            potContent.ingredients[index].imagePath.toString(),
+            potContent.ingredients.elementAt(index).imagePath.toString(),
           ),
         ),
       );

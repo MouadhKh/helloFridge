@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_fridge/single_ingredient.dart';
+import 'package:hello_fridge/main_layout.dart';
 import 'package:sign_button/sign_button.dart';
 
 class SignInLayout extends StatelessWidget {
@@ -16,33 +16,34 @@ class SignInLayout extends StatelessWidget {
                 image: AssetImage('assets/images/logo.png'),
               ),
               SizedBox(height: 70.0),
-              // Text("HelloFridge",
-              //     style: TextStyle(
-              //         fontFamily: 'Pacifico',
-              //         color: Colors.lightGreen,
-              //         fontWeight: FontWeight.bold,
-              //         fontSize: 40.0)),
-              // Text("COOK LEFTOVERS, SAVE FOOD",
-              //     style: TextStyle(
-              //         color: Colors.lightGreen,
-              //         fontSize: 20.0,
-              //         letterSpacing: 2.5,
-              //         fontFamily: 'SourceSansPro')),
               Container(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SignInButton(
-                          buttonType: ButtonType.google,
-                          buttonSize: ButtonSize.large,
-                          onPressed: () {}),
+                        buttonType: ButtonType.google,
+                        buttonSize: ButtonSize.large,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainLayout()));
+                        },
+                      ),
                       SizedBox(
                         height: 15,
                       ),
                       SignInButton(
                           buttonType: ButtonType.facebook,
                           buttonSize: ButtonSize.large,
-                          onPressed: () {}),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainLayout(),
+                              ),
+                            );
+                          }),
                       SizedBox(
                         height: 15,
                       ),
@@ -53,11 +54,7 @@ class SignInLayout extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SingleIngredientLayout(
-                                      ingredientsName: "Bread",
-                                      imagePath: "assets/images/bread.png",
-                                      unit: ["Gram", "Kilogram"]),
-                                ));
+                                    builder: (context) => MainLayout()));
                           })
                     ]),
               )
@@ -66,7 +63,6 @@ class SignInLayout extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
 

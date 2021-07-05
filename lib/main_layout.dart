@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_fridge/pot_widget.dart';
 import 'package:hello_fridge/recipes_suggestions_layout.dart';
 
-
+import 'fill_pot_layout.dart';
 import 'main.dart';
 
 class MainLayout extends StatefulWidget {
@@ -20,19 +20,22 @@ class _MainLayoutState extends State<MainLayout> {
           title: Text("Hello Fridge"),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(top: 40),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(bottom: 40.0),
                 child: Pot(),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(bottom: 10.0),
                 child: ElevatedButton(
                     style:
                         ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FillPotLayout()));
+                    },
                     child: SizedBox(
                         width: 120,
                         height: 20,
@@ -42,25 +45,28 @@ class _MainLayoutState extends State<MainLayout> {
                           Text("Fill pot")
                         ]))),
               ),
-              ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => RecipesSuggestionsLayout()));
-                  },
-                  child: SizedBox(
-                      width: 130,
-                      height: 20,
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.restaurant,
-                            size: 24,
-                          ),
-                          Text(" Get recipes", textAlign: TextAlign.center),
-                        ],
-                      ))),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 30.0),
+                child: ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => RecipesSuggestionsLayout()));
+                    },
+                    child: SizedBox(
+                        width: 130,
+                        height: 20,
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.restaurant,
+                              size: 24,
+                            ),
+                            Text(" Get recipes", textAlign: TextAlign.center),
+                          ],
+                        ))),
+              ),
               TabBarFlexibleFractioallyRecipes()
             ],
           ),
@@ -73,9 +79,7 @@ class TabBarFlexibleFractioallyRecipes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
         child: Container(
-            padding: EdgeInsets.only(top: 15.0),
-            child:
-                TabBarRecipes()));
+            padding: EdgeInsets.only(top: 15.0), child: TabBarRecipes()));
   }
 }
 
@@ -89,7 +93,7 @@ class TabBarRecipes extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(30.0),
+            preferredSize: Size.fromHeight(50.0),
             child: AppBar(
               primary: false,
               toolbarHeight: kMinInteractiveDimension,
@@ -150,7 +154,7 @@ class TabBarRecipes extends StatelessWidget {
                       delegate: SliverChildListDelegate(
                         <Widget>[
                           const Text('Sweet Sour Rice'),
-                          const Text('Tomatoe Rice'),
+                          const Text('Tomato Rice'),
                         ],
                       ),
                     ),
