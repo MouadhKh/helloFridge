@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hello_fridge/main_layout.dart';
 import 'package:hello_fridge/single_recipe_container.dart';
 
 import 'entities/recipe.dart';
@@ -93,7 +94,8 @@ class SingleRecipePreparationLayout extends StatelessWidget {
                               TextButton(
                                   child: Text('Yes'),
                                   onPressed: () {
-                                    //TODO go to the new mainLayout
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => MainLayout()));
                                   })
                             ],
                           ));

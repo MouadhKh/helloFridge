@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/entities/pot_content.dart';
 import 'package:hello_fridge/entities/ingredient.dart';
+import 'package:hello_fridge/fill_pot_layout.dart';
+
 
 class PotContentList extends StatelessWidget {
   final PotContent potContent =
@@ -60,7 +62,10 @@ class PotContentList extends StatelessWidget {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => FillPotLayout()));
+                },
                 child: SizedBox(
                     width: 120,
                     child: Row(children: [
