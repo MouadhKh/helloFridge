@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_fridge/main.dart';
 import 'package:hello_fridge/single_recipe_container.dart';
 import 'package:hello_fridge/utilities/recipe_util.dart';
 import 'package:hello_fridge/sign_in.dart';
@@ -17,7 +18,7 @@ class RecipesSuggestionsLayout extends StatefulWidget {
 class _RecipesSuggestionsLayoutState extends State<RecipesSuggestionsLayout> {
   List<Widget> _recipesWidgets() {
     return RecipeUtility.findBestMatch(
-            Ingredient.getDummyIngredients(), Recipe.getDummyRecipes())
+            ingredientsInPot, Recipe.getDummyRecipes())
         .map((recipe) {
       return SingleRecipeContainer(recipe,120,120);
     }).toList();
@@ -32,6 +33,7 @@ class _RecipesSuggestionsLayoutState extends State<RecipesSuggestionsLayout> {
             icon: const Icon(Icons.logout),
             tooltip: 'Log out',
             onPressed: () {
+              ingredientsInPot.clear();
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SignInLayout()));
             },

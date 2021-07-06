@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_fridge/single_ingredient_icon.dart';
 import 'package:string_similarity/string_similarity.dart';
 import 'entities/ingredient.dart';
+import 'package:hello_fridge/main.dart';
 
 class IngredientsContainer extends StatefulWidget {
   const IngredientsContainer({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _IngredientsContainerState extends State<IngredientsContainer> {
 
   void updateResults(String newValue) {
     if (newValue.isEmpty) {
-      ingredients = Ingredient.getDummyIngredients();
+      ingredients = ingredientsInPot;
     } else {
       print("new Value = $newValue");
       ingredients = this.ingredients.where((ing) {

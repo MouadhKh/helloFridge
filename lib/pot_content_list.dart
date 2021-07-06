@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hello_fridge/entities/pot_content.dart';
 import 'package:hello_fridge/entities/ingredient.dart';
 import 'package:hello_fridge/fill_pot_layout.dart';
+import 'package:hello_fridge/main.dart';
 import 'package:hello_fridge/sign_in.dart';
 
 
 class PotContentList extends StatelessWidget {
   final PotContent potContent =
-      PotContent.fromIngredients(ingredients: Ingredient.getDummyIngredients());
+      PotContent.fromIngredients(ingredients: ingredientsInPot);
 
   //TODO investigate
   // const PotContentList({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class PotContentList extends StatelessWidget {
           icon: const Icon(Icons.logout),
           tooltip: 'Log out',
           onPressed: () {
+            ingredientsInPot.clear();
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => SignInLayout()));
           },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_fridge/main.dart';
 import 'package:hello_fridge/main_layout.dart';
 import 'package:sign_button/sign_button.dart';
 
@@ -24,6 +25,7 @@ class SignInLayout extends StatelessWidget {
                         buttonType: ButtonType.google,
                         buttonSize: ButtonSize.large,
                         onPressed: () {
+                          ingredientsInPot.clear();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -37,6 +39,7 @@ class SignInLayout extends StatelessWidget {
                           buttonType: ButtonType.facebook,
                           buttonSize: ButtonSize.large,
                           onPressed: () {
+                            ingredientsInPot.clear();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -51,6 +54,7 @@ class SignInLayout extends StatelessWidget {
                           buttonType: ButtonType.twitter,
                           buttonSize: ButtonSize.large,
                           onPressed: () {
+                            ingredientsInPot.clear();
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

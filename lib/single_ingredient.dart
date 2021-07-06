@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hello_fridge/sign_in.dart';
+import 'package:hello_fridge/entities/ingredient.dart';
+import 'package:hello_fridge/main.dart';
+import 'package:hello_fridge/main_layout.dart';
 
 class SingleIngredientLayout extends StatefulWidget {
   final String? ingredientsName;
@@ -33,6 +36,11 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
     }
   }
 
+  var ingredientname;
+  var ingredientquantity;
+  var ingredientunit;
+  var ingredientpath;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +50,7 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
             icon: const Icon(Icons.logout),
               tooltip: 'Log out',
               onPressed: () {
+                ingredientsInPot.clear();
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => SignInLayout()));
               },
@@ -80,6 +89,9 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Quantity'),
+                                onChanged: (String? newValue) {
+                                    ingredientquantity = int.parse(newValue!);
+                                }
                             ),
                           ),
                           SizedBox(
@@ -92,7 +104,6 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                                   labelText: 'Unity',
                                 ),
                                 //TODO check if its empty later
-                                value: _unit!.first,
                                 icon: const Icon(Icons.arrow_downward),
                                 iconSize: 24,
                                 elevation: 16,
@@ -102,6 +113,7 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                                   setState(() {
                                     _selectedUnit = newValue!;
                                   });
+                                  ingredientunit = newValue!;
                                 },
                                 items: _unit!.map<DropdownMenuItem<String>>(
                                     (String value) {
@@ -121,9 +133,50 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.all(10.0)),
-                          onPressed: () {
-                            //TODO
-                          },
+                              onPressed: () {
+                                //TODO How to find out which ingredients is picked?
+                                // Currentl hardcoded strict order Rice, Tomato, Spice
+                                // Quantity and Unit defined by user
+                                Ingredient ingredient = Ingredient(name: "bowl", quantity: ingredientquantity, unit: ["ml"],imagePath: "assets/images/bowl.png");
+
+                                if(ingredientsInPot.length == 0){
+                                      ingredient = Ingredient(
+                                      name: "Rice",
+                                      quantity: ingredientquantity,
+                                      unit: [ingredientunit.toString()],
+                                      imagePath: "assets/images/rice.png");
+                                }else if(ingredientsInPot.length == 1){
+                                      ingredient = Ingredient(
+                                      name: "Chicken Breast",
+                                      quantity: ingredientquantity,
+                                      unit: [ingredientunit.toString()],
+                                      imagePath: "assets/images/chicken-breast.png");
+                                }else if(ingredientsInPot.length == 2){
+                                      ingredient = Ingredient(
+                                      name: "Tomato",
+                                      quantity: ingredientquantity,
+                                      unit: [ingredientunit.toString()],
+                                      imagePath: "assets/images/tomato.png");
+                                }else if(ingredientsInPot.length == 3){
+                                      ingredient = Ingredient(
+                                      name: "Olive oil",
+                                      quantity: ingredientquantity,
+                                      unit: [ingredientunit.toString()],
+                                      imagePath: "assets/images/oil.png");
+                                }else if(ingredientsInPot.length == 4){
+                                  ingredient = Ingredient(
+                                      name: "Spices",
+                                      quantity: ingredientquantity,
+                                      unit: [ingredientunit.toString()],
+                                      imagePath: "assets/images/spice.png");
+                                }
+
+                                ingredientsInPot.add(ingredient);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                  builder: (context) => MainLayout()));
+                              },
                           child: SizedBox(
                             width: 120,
                             child: Row(children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/entities/ingredient.dart';
 import 'package:hello_fridge/entities/pot_content.dart';
+import 'package:hello_fridge/main.dart';
 import 'package:hello_fridge/pot_content_list.dart';
 
 //TODO need to become stateful with dynamic data later !
@@ -8,7 +9,7 @@ class Pot extends StatelessWidget {
   //This doesn't make sense in a real app
 
   final PotContent potContent =
-      PotContent.fromIngredients(ingredients: Ingredient.getDummyIngredients());
+      PotContent.fromIngredients(ingredients: ingredientsInPot);
 
   @override
   Widget build(BuildContext context) {

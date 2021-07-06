@@ -23,6 +23,7 @@ class _MainLayoutState extends State<MainLayout> {
             icon: const Icon(Icons.logout),
             tooltip: 'Log out',
             onPressed: () {
+              ingredientsInPot.clear();
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SignInLayout()));
             },

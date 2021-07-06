@@ -6,6 +6,8 @@ import 'package:hello_fridge/sign_in.dart';
 
 import 'entities/recipe.dart';
 import 'main_layout.dart';
+import 'main.dart';
+
 
 class SingleRecipePreparationLayout extends StatelessWidget {
   Recipe recipe;
@@ -21,6 +23,7 @@ class SingleRecipePreparationLayout extends StatelessWidget {
           icon: const Icon(Icons.logout),
           tooltip: 'Log out',
           onPressed: () {
+            ingredientsInPot.clear();
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => SignInLayout()));
           },
@@ -104,6 +107,7 @@ class SingleRecipePreparationLayout extends StatelessWidget {
                               TextButton(
                                   child: Text('Yes'),
                                   onPressed: () {
+                                    ingredientsInPot.clear();
                                     Navigator.of(context).push(MaterialPageRoute(
                                         builder: (context) => MainLayout()));
                                   })

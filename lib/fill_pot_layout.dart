@@ -3,6 +3,7 @@ import 'package:hello_fridge/ingredients_container.dart';
 import 'package:hello_fridge/pot_content_list.dart';
 import 'package:hello_fridge/pot_widget.dart';
 import 'package:hello_fridge/sign_in.dart';
+import 'package:hello_fridge/main.dart';
 
 
 class FillPotLayout extends StatefulWidget {
@@ -22,6 +23,7 @@ class _FillPotLayoutState extends State<FillPotLayout> {
             icon: const Icon(Icons.logout),
             tooltip: 'Log out',
             onPressed: () {
+              ingredientsInPot.clear();
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => SignInLayout()));
             },
