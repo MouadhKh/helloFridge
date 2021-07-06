@@ -38,7 +38,7 @@ class SingleRecipeLayout extends StatelessWidget {
                       ),
                       height: 25,
                       child: Text(
-                        " ${ing.name}",
+                        " ${ing.name} ${ing.quantity} ${ing.unit}",
                         style: TextStyle(fontSize: 14),
                       ),
                     );
