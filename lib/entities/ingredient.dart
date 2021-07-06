@@ -37,7 +37,7 @@ class Ingredient {
     Ingredient rice = Ingredient(
         name: "Rice",
         quantity: 200,
-        unit: ["gram", "kilogram"],
+        unit: ["gram"],
         imagePath: "assets/images/rice.png");
     Ingredient spices = Ingredient(
         name: "Spices",
@@ -47,12 +47,12 @@ class Ingredient {
     Ingredient chickenBreast = Ingredient(
         name: "Chicken Breast",
         quantity: 500,
-        unit: ["gram", "kilogram"],
+        unit: ["gram"],
         imagePath: "assets/images/chicken-breast.png");
     Ingredient oliveOil = Ingredient(
         name: "Olive oil",
         quantity: 100,
-        unit: ["ml", "L"],
+        unit: ["ml"],
         imagePath: "assets/images/oil.png");
     Ingredient tomatoes = Ingredient(
         name: "Tomato",
