@@ -24,13 +24,14 @@ class Recipe {
       return e;
     });
     List<String> tomatoPreparationSteps = [
-      "Cook the rice",
-      "Add the apple",
-      "Add the banana",
-      "Add the tomato",
-      "Add the banana",
-      "Add the orange",
-      "Serve with juice"
+      "Boil the rice",
+      "Slice 2 medium Tomatoes",
+      "Put tomatoes and oil into the pot",
+      "Add chicken breast",
+      "Add spices",
+      "Cook the sauce",
+      "Add the boiled rice",
+      "Enjoy!"
     ];
     Recipe tomatoRice = Recipe(
         "Tomato Rice",
