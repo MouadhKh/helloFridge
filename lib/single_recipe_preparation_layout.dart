@@ -117,11 +117,12 @@ class SingleRecipePreparationLayout extends StatelessWidget {
                 icon: Icon(Icons.history),
                 label: Text("Add to history"),
               ),
-              ElevatedButton.icon(
+            // TODO implement dynamic favorites
+              /*  ElevatedButton.icon(
                 onPressed: () {},
                 icon: Icon(Icons.favorite),
                 label: Text("Add to favorites"),
-              ),
+              ),*/
             ],
           )
         ]),

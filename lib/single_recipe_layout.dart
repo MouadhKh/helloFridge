@@ -61,7 +61,8 @@ class SingleRecipeLayout extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                   child: Row(children: [
-                    Flexible(
+                    // TODO implement dynamic favorites
+                    /*Flexible(
                         child: Container(
                       alignment: Alignment.bottomLeft,
                       child: ElevatedButton(
@@ -81,7 +82,7 @@ class SingleRecipeLayout extends StatelessWidget {
                                       textAlign: TextAlign.center),
                                 ],
                               ))),
-                    )),
+                    )),*/
                     Flexible(
                       child: Container(
                         alignment: Alignment.bottomRight,

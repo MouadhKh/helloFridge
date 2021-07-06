@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hello_fridge/pot_widget.dart';
 import 'package:hello_fridge/recipes_suggestions_layout.dart';
 import 'package:hello_fridge/sign_in.dart';
+import 'package:hello_fridge/single_recipe_layout.dart';
+import 'entities/recipe.dart';
 
 import 'fill_pot_layout.dart';
 import 'main.dart';
@@ -136,20 +138,14 @@ class TabBarRecipes extends StatelessWidget {
                     sliver: SliverList(
                       delegate: SliverChildListDelegate(
                         <Widget>[
-                          const Text("Mayo Fries"),
-                          const Text("Ketchup Fries"),
-                          const Text('Curry Fries'),
-                          const Text('Happy Fries'),
-                          const Text('Sour Sour Rice'),
-                          const Text('Crazy Fries'),
-                          const Text('Ugly Fries'),
-                          const Text('Avocado Fries'),
-                          const Text('Garlic Fries'),
-                          const Text('Spicy Fries'),
-                          const Text('Sweet Sour Rice'),
-                          const Text('Sweet Fries'),
-                          const Text('Sour Fries'),
-                          const Text('Tomatoe Rice'),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(padding: EdgeInsets.all(0)),
+                                    onPressed: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => SingleRecipeLayout(Recipe.getDummyRecipes().first)));
+                                    },
+                                    child: Text('Tomato Rice')
+                                  ),
                         ],
                       ),
                     ),
@@ -164,8 +160,6 @@ class TabBarRecipes extends StatelessWidget {
                     sliver: SliverList(
                       delegate: SliverChildListDelegate(
                         <Widget>[
-                          const Text('Sweet Sour Rice'),
-                          const Text('Tomato Rice'),
                         ],
                       ),
                     ),
