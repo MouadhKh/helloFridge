@@ -4,7 +4,6 @@ import 'package:hello_fridge/single_recipe_container.dart';
 import 'package:hello_fridge/utilities/recipe_util.dart';
 import 'package:hello_fridge/sign_in.dart';
 
-import 'entities/ingredient.dart';
 import 'entities/recipe.dart';
 
 class RecipesSuggestionsLayout extends StatefulWidget {

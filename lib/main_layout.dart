@@ -21,15 +21,16 @@ class _MainLayoutState extends State<MainLayout> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Hello Fridge"),
-          actions: <Widget>[IconButton(
-            icon: const Icon(Icons.logout),
-            tooltip: 'Log out',
-            onPressed: () {
-              ingredientsInPot.clear();
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SignInLayout()));
-            },
-          ),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.logout),
+              tooltip: 'Log out',
+              onPressed: () {
+                ingredientsInPot.clear();
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => SignInLayout()));
+              },
+            ),
           ],
         ),
         body: Padding(
@@ -134,18 +135,33 @@ class TabBarRecipes extends StatelessWidget {
                 shrinkWrap: true,
                 slivers: <Widget>[
                   SliverPadding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.only(
+                        bottom: 10.0, top: 5.0, right: 2, left: 2),
                     sliver: SliverList(
                       delegate: SliverChildListDelegate(
                         <Widget>[
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(padding: EdgeInsets.all(0)),
-                                    onPressed: () {
-                                      Navigator.push(context,
-                                          MaterialPageRoute(builder: (context) => SingleRecipeLayout(Recipe.getDummyRecipes().first)));
-                                    },
-                                    child: Text('Tomato Rice')
-                                  ),
+                          OutlinedButton.icon(
+                            label: Text(
+                              'Tomato Rice',
+                              style: TextStyle(color: lightGreen),
+                            ),
+                            icon: Image.asset(
+                              "assets/images/tomatoes_rice.jpg",
+                              width: 36,
+                              height: 36,
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                side: BorderSide(width: 1.5, color: lightGreen),
+                                minimumSize: Size(double.infinity, 50),
+                                shadowColor: lightGreen),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SingleRecipeLayout(
+                                          Recipe.getDummyRecipes().first)));
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -159,8 +175,7 @@ class TabBarRecipes extends StatelessWidget {
                     padding: const EdgeInsets.all(20.0),
                     sliver: SliverList(
                       delegate: SliverChildListDelegate(
-                        <Widget>[
-                        ],
+                        <Widget>[],
                       ),
                     ),
                   ),

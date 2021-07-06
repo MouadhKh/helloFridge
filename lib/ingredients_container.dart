@@ -106,13 +106,8 @@ class IngredientsGrid extends StatelessWidget {
     return this.ingredients.map((ing) => SingleIngredientIcon(ing)).toList();
   }
 
-  // const IngredientsGrid({
-  //   Key? key,
-  // }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    this.ingredients.forEach((ing) => print(ing.name + ","));
     return ListView(
       children: <Widget>[
         GridView.count(

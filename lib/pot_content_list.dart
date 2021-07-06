@@ -5,7 +5,6 @@ import 'package:hello_fridge/fill_pot_layout.dart';
 import 'package:hello_fridge/main.dart';
 import 'package:hello_fridge/sign_in.dart';
 
-
 class PotContentList extends StatelessWidget {
   final PotContent potContent =
       PotContent.fromIngredients(ingredients: ingredientsInPot);
@@ -18,15 +17,16 @@ class PotContentList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("My Pot"),
-        actions: <Widget>[IconButton(
-          icon: const Icon(Icons.logout),
-          tooltip: 'Log out',
-          onPressed: () {
-            ingredientsInPot.clear();
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SignInLayout()));
-          },
-        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Log out',
+            onPressed: () {
+              ingredientsInPot.clear();
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SignInLayout()));
+            },
+          ),
         ],
       ),
       body: Padding(
@@ -60,7 +60,11 @@ class PotContentList extends StatelessWidget {
                           .quantity
                           .toString() +
                       " " +
-                      potContent.ingredients.elementAt(index).unit.toString()),
+                      potContent.ingredients
+                          .elementAt(index)
+                          .unit
+                          .first
+                          .toString()),
                 );
               },
               itemCount: potContent.getPotSize(),
@@ -75,8 +79,8 @@ class PotContentList extends StatelessWidget {
             ElevatedButton(
                 style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10.0)),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => FillPotLayout()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => FillPotLayout()));
                 },
                 child: SizedBox(
                     width: 120,

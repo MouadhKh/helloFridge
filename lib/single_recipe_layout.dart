@@ -13,19 +13,17 @@ class SingleRecipeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(recipe.name),
-          actions: <Widget>[IconButton(
+        appBar: AppBar(title: Text(recipe.name), actions: <Widget>[
+          IconButton(
             icon: const Icon(Icons.logout),
             tooltip: 'Log out',
             onPressed: () {
               ingredientsInPot.clear();
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SignInLayout()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SignInLayout()));
             },
           ),
-          ]
-        ),
+        ]),
         body: Padding(
           padding: const EdgeInsets.only(top: 30),
           child: Column(
@@ -49,7 +47,7 @@ class SingleRecipeLayout extends StatelessWidget {
                       ),
                       height: 25,
                       child: Text(
-                        " ${ing.name} ${ing.quantity} ${ing.unit}",
+                        " ${ing.quantity} ${ing.unit.first} ${ing.name} ",
                         style: TextStyle(fontSize: 14),
                       ),
                     );
@@ -94,7 +92,7 @@ class SingleRecipeLayout extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) =>
                                     SingleRecipePreparationLayout(recipe),
-                                    // SingleRecipePreparationLayout(recipe),
+                                // SingleRecipePreparationLayout(recipe),
                               ),
                             );
                           },
