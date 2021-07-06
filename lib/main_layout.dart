@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/pot_widget.dart';
 import 'package:hello_fridge/recipes_suggestions_layout.dart';
+import 'package:hello_fridge/sign_in.dart';
 
 import 'fill_pot_layout.dart';
 import 'main.dart';
@@ -18,6 +19,15 @@ class _MainLayoutState extends State<MainLayout> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Hello Fridge"),
+          actions: <Widget>[IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Log out',
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SignInLayout()));
+            },
+          ),
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 40),

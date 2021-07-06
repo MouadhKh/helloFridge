@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_fridge/entities/pot_content.dart';
 import 'package:hello_fridge/entities/ingredient.dart';
 import 'package:hello_fridge/fill_pot_layout.dart';
+import 'package:hello_fridge/sign_in.dart';
 
 
 class PotContentList extends StatelessWidget {
@@ -16,6 +17,15 @@ class PotContentList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("My Pot"),
+        actions: <Widget>[IconButton(
+          icon: const Icon(Icons.logout),
+          tooltip: 'Log out',
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SignInLayout()));
+          },
+        ),
+        ],
       ),
       body: Padding(
         padding:

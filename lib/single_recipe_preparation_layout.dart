@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/main_layout.dart';
 import 'package:hello_fridge/single_recipe_container.dart';
+import 'package:hello_fridge/sign_in.dart';
 
 import 'entities/recipe.dart';
 import 'main_layout.dart';
@@ -16,6 +17,15 @@ class SingleRecipePreparationLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(recipe.name),
+        actions: <Widget>[IconButton(
+          icon: const Icon(Icons.logout),
+          tooltip: 'Log out',
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SignInLayout()));
+          },
+        ),
+        ]
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 30),

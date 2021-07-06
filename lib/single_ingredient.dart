@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hello_fridge/sign_in.dart';
 
 class SingleIngredientLayout extends StatefulWidget {
   final String? ingredientsName;
@@ -36,7 +37,17 @@ class _SingleIngredientLayoutState extends State<SingleIngredientLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(title: Text(_ingredientsName!), centerTitle: true),
+        appBar: AppBar(title: Text(_ingredientsName!), centerTitle: true,
+            actions: <Widget>[IconButton(
+            icon: const Icon(Icons.logout),
+              tooltip: 'Log out',
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => SignInLayout()));
+              },
+            ),
+            ],
+        ),
         body: Container(
           child: SingleChildScrollView(
             child: SizedBox(

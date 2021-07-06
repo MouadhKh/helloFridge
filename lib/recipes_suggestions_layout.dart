@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_fridge/single_recipe_container.dart';
 import 'package:hello_fridge/utilities/recipe_util.dart';
+import 'package:hello_fridge/sign_in.dart';
 
 import 'entities/ingredient.dart';
 import 'entities/recipe.dart';
@@ -27,6 +28,15 @@ class _RecipesSuggestionsLayoutState extends State<RecipesSuggestionsLayout> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Recipes Suggestions"),
+          actions: <Widget>[IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Log out',
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SignInLayout()));
+            },
+          ),
+          ],
         ),
         body: Column(
           children: [
